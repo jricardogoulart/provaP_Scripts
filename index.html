@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prova - Jogo Herói e Vilão</title>
+    <script src="vue.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app" aria-live="polite">
+        <section class="status" aria-label="Status do jogo">
+            <p class="briga-animado">Briga Aleatória</p>
+            <p>Status: {{ mensagemStatus }}</p>
+        </section>
+        <div class="concorrentes">
+            <article class="personagem" id="hero" aria-label="Herói">
+                <h1 class="degrade-animado">Sonic Boladão</h1>
+                <div class="barra-vida" :style="{width: heroi.vida + '%'}" aria-valuenow="{{ heroi.vida }}" aria-valuemin="0" aria-valuemax="100" role="progressbar">{{ heroi.vida }}%</div>
+                <div class="sprite">
+                    <img :src="heroiImg" alt="Imagem do herói" role="img" aria-label="Herói em ação">
+                </div>
+                
+                <div class="acoes">
+                    <button @click="atacar(true)"><i class="fa fa-gun"></i> Atacar</button>
+                    <button @click="defender(true)"><i class="fa fa-shield-alt"></i> Defender</button>
+                    <button @click="usarPocao(true)"><i class="fa fa-flask"></i> Usar poção</button>
+                    <button @click="correr(true)"><i class="fa fa-running"></i> Correr</button>
+                </div>
+            </article>
+            <article class="personagem" id="boss" aria-label="Vilão">
+                <h1 class="degrade-animado">Mário da Deepweb</h1>
+                <div class="barra-vida" :style="{width: vilao.vida + '%'}" aria-valuenow="{{ vilao.vida }}" aria-valuemin="0" aria-valuemax="100" role="progressbar">{{ vilao.vida }}%</div>
+                <div class="sprite" id="vilao">
+                    <img :src="vilaoImg" alt="Imagem do vilão" role="img" aria-label="Vilão em ação">
+                </div>
+                
+            </article>
+        </div>
+    </div>
+</body>
+<script src="index.js"></script>
+</html>
